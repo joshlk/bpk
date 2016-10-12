@@ -11,8 +11,8 @@ except:
     import json
 
 """
-For reading and writing to the blst format. Nuances that users should take note:
-* String column names are always saved as strings irspective of there original data-type (e.g. int)
+For reading and writing to the blosc store blst format. Nuances that users should take note:
+* String column names are always saved as strings irrespective of there original data-type (e.g. int)
 * DataFrame index is currently not preserved
 * Datatypes currently supported: strings, numerical, datetime, categorical (with string and numeric)
 """
@@ -135,18 +135,3 @@ def read_blst(path, columns='ALL'):
             df[col] = col_df
 
     return df
-
-
-import numpy as np
-
-df = pd.DataFrame(np.random.rand(4, 5))
-df.columns = ['A', 'B', 'C', 'D', 'E']
-df.index = [0.1, 0.2, 0.3, 0.4]
-df['A'] = df['A'].astype('str')
-df['B'] = df['B'].astype('category')
-df['C'] = pd.to_datetime(1e18*df['C'])
-df['D'] = (1e5*df['D']).astype('uint')
-
-to_blst(df, '/Users/josh/git/blosc_store/test_output.blst')
-
-df_2 = read_blst('/Users/josh/git/blosc_store/test_output.blst')
