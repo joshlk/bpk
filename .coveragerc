@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = blosc_store
+include = **/*.py
+omit =
+    */__init__.py
