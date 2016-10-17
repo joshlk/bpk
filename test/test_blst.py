@@ -12,9 +12,8 @@ def test_write_read():
     # Create DataFrame
     df = pd.DataFrame(np.random.rand(4, 5))
     df.columns = ['A', 'B', 'C', 'D', 'E']
-    df.index = [0.1, 0.2, 0.3, 0.4]
-    df['A'] = df['A'].astype('str')
-    df['B'] = df['B'].astype('category')
+    df['A'] = ['a', 'b', 'c', 'd']
+    df['B'] = df['A'].astype('category')
     df['C'] = pd.to_datetime(1e18 * df['C'])
     df['D'] = (1e5 * df['D']).astype('uint')
 
@@ -25,5 +24,5 @@ def test_write_read():
     to_blst(df, blst_path)
     df_2 = read_blst(blst_path)
 
-    assert df.equals(df_2)
+    assert (df.values == df_2.values).all()
 
