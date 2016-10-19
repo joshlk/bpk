@@ -3,7 +3,7 @@ A high performance compressed columnar data store for Pandas DataFrames.
 
 If you are represented with the following dilemma, then blosc_store can help:
 * You have a large table in [Pandas](http://pandas.pydata.org) (>5GB)
-* You want to save
+* You want to save it
 * You want to preserve the Pandas datatypes (bool, numerical, datetime, category, string)
 * BUT you can't use HDF due to large strings in some of the columns! ([OverflowError: value too large to convert to int](https://github.com/pandas-dev/pandas/issues/2773) error)
 * **There are no other good alternatives**
