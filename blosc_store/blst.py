@@ -91,6 +91,10 @@ def read_blst(path, columns='ALL'):
     :return: Read data
     :rtype: pandas.DataFrame
     """
+    
+    # Check path
+    if not os.path.isdir(path):
+        raise IOError("Folder does not exist: {}".format(path))
 
     # Read the columns
     column_meta = read_blst_columns(path)
