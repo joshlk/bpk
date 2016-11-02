@@ -12,7 +12,7 @@ except:
 
 """
 For reading and writing to the blosc store blst format. Nuances that users should take note:
-* String column names are always saved as strings irrespective of there original data-type (e.g. int)
+* Column names are always saved as strings irrespective of there original data-type (e.g. could be int)
 * DataFrame index is currently not preserved
 * Datatypes currently supported: strings, numerical, datetime, categorical (with string and numeric)
 """
